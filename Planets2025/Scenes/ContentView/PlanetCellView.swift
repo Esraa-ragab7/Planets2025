@@ -7,12 +7,18 @@
 
 import SwiftUI
 
-struct PlanetCellView: View {
+struct ListCellView: View {
+    let text: String // The text to display in the cell
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        Text(text)
+            .font(.body)
+            .padding()
+            .frame(maxWidth: .infinity, alignment: .leading) // Align text to the left
     }
 }
 
+// Preview for the cell
 #Preview {
-    PlanetCellView()
+    ListCellView(text: "Sample Cell Text") // Preview in a fitting size
 }
