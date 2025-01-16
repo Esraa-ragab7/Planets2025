@@ -6,9 +6,8 @@
 //
 
 import Foundation
+import Combine
 
-typealias DisplayPlanetsUseCaseCompletionHandler = (_ planets: Result<[Planet]>) -> Void
-
-protocol PlanetsUseCase {
-    func displayPlanets(completionHandler: @escaping DisplayPlanetsUseCaseCompletionHandler)
+protocol PlanetsListUseCase {
+    func execute() -> AnyPublisher<[Planet], Error>
 }

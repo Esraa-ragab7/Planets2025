@@ -5,7 +5,10 @@
 //  Created by Esraa Ragab on 16/01/2025.
 //
 
-class PlanetsListUseCaseImplementation: PlanetsUseCase {
+import Combine
+
+class PlanetsListUseCaseImplementation: PlanetsListUseCase {
+    
     let planetsRepository: PlanetsRepositoryType
     
     init(planetsRepository: PlanetsRepositoryType) {
@@ -13,11 +16,7 @@ class PlanetsListUseCaseImplementation: PlanetsUseCase {
     }
     
     // MARK: - DisplayPlanetsUseCase
-    
-    func displayPlanets(completionHandler: @escaping (Result<[Planet]>) -> Void) {
-        self.planetsRepository.fetchPlanets { (result) in
-            // Do any additional processing & after that call the completion handler
-            completionHandler(result)
-        }
+    func execute() -> AnyPublisher<[Planet], Error>{
+        return planetsRepository.fetchPlanets()
     }
 }

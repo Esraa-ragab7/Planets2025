@@ -14,5 +14,3 @@ struct CoreError: Error {
     
     var message = ""
 }
-
-typealias Result<T> = Swift.Result<T, Error>
