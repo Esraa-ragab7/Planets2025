@@ -9,12 +9,18 @@ import SwiftUI
 
 @main
 struct Planets2025App: App {
-    let persistenceController = PersistenceController.shared
+    let viewModel: PlanetsListViewModel
+    
+    init() {
+        let apiClient = ApiClientImplementation(urlSession: URLSession.shared)
+        let apiPlanetsRepository = ApiPlanetsRepositoryImplementation(apiClient: apiClient)
+        let planetsListUseCase = PlanetsListUseCaseImplementation(planetsRepository: apiPlanetsRepository)
+        self.viewModel = PlanetsListViewModel(planetsListUseCase: planetsListUseCase)
+    }
 
     var body: some Scene {
         WindowGroup {
-            ContentView()
-                .environment(\.managedObjectContext, persistenceController.container.viewContext)
+            PlanetsListView(viewModel: viewModel)
         }
     }
 }
