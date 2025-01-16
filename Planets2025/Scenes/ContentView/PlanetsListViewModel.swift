@@ -8,7 +8,7 @@
 import SwiftUI
 import Combine
 
-class PlanetsViewModel: ObservableObject {
+class PlanetsListViewModel: ObservableObject {
     @Published var planets: [Planet] = []
     @Published var errorMessage: String?
     private var cancellables = Set<AnyCancellable>()
@@ -20,6 +20,7 @@ class PlanetsViewModel: ObservableObject {
 
     func fetchPlanets() {
         planetsListUseCase.execute()
+            .receive(on: DispatchQueue.main)  // Ensure updates are on the main thread
             .sink(receiveCompletion: { [weak self] completion in
                 switch completion {
                 case .finished:

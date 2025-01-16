@@ -9,7 +9,7 @@ import SwiftUI
 import CoreData
 
 struct PlanetsListView: View {
-    @ObservedObject var viewModel: PlanetsViewModel
+    @ObservedObject var viewModel: PlanetsListViewModel
 
     init(viewModel: PlanetsListViewModel) {
         self.viewModel = viewModel
@@ -24,7 +24,7 @@ struct PlanetsListView: View {
                         .padding()
                 }
                 
-                List(viewModel.planets, id: \.id) { planet in
+                List(viewModel.planets, id: \.name) { planet in
                     Text(planet.name)
                         .font(.headline)
                         .padding()
@@ -36,13 +36,9 @@ struct PlanetsListView: View {
             }
         }
     }
-    
-    func textView(user: User) -> some View {
-        Text(user.login)
-            .font(.headline)
-    }
 }
 
 #Preview {
-    viewModel: ContentViewModel(fetchUsersUseCase: FetchUsersUseCase(repository: ContentRepository(service: ContentService())))
+    PlanetsListView(viewModel: PlanetsListViewModel(planetsListUseCase: PlanetsListUseCaseImplementation(planetsRepository: ApiPlanetsRepositoryImplementation(apiClient: ApiClientImplementation(urlSession: URLSession.shared)))))
 }
+
