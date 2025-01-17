@@ -15,7 +15,7 @@ class PlanetsListUseCaseImplementation: PlanetsListUseCase {
         self.planetsRepository = planetsRepository
     }
     
-    // MARK: - DisplayPlanetsUseCase
+    // MARK: - PlanetsListUseCase
     func execute() -> AnyPublisher<[Planet], Error>{
         return planetsRepository.fetchPlanets()
     }
