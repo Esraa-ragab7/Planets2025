@@ -12,9 +12,11 @@ struct ListCellView: View {
     
     var body: some View {
         Text(text)
-            .font(.body)
+            .font(.system(size: 20, weight: .semibold, design: .default))
+            .foregroundColor(Color.planetCellTitleColor) // Custom text color
             .padding()
-            .frame(maxWidth: .infinity, alignment: .leading) // Align text to the left
+            .frame(maxWidth: .infinity, maxHeight: 70, alignment: .leading) // Align text to the left
+            .listRowSeparator(.hidden)
     }
 }
 
