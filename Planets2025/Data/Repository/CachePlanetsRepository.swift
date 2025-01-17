@@ -8,7 +8,7 @@
 import Foundation
 import Combine
 
-class CachePlanetsGateway: PlanetsRepositoryType {
+class CachePlanetsRepository: PlanetsRepositoryType {
     let apiPlanetsRepository: ApiPlanetsRepository
     let localPersistencePlanetsRepository: LocalPersistencePlanetsRepository
     
@@ -45,6 +45,7 @@ class CachePlanetsGateway: PlanetsRepositoryType {
         switch result {
         case .success(let planets):
             // Return the planets array as a publisher
+            localPersistencePlanetsRepository.save(planets: planets)
             return Just(planets)
                 .setFailureType(to: Error.self)  // Convert Just to AnyPublisher
                 .eraseToAnyPublisher()
