@@ -16,7 +16,7 @@ Planets is an educational app designed to share detailed information about the p
    
 2. Navigate to the project directory::
    ```bash
-   cd Planets
+   cd Planets2025
 
 3. Open the project in Xcode:
    ```bash
