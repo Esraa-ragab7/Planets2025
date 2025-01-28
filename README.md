@@ -20,7 +20,7 @@ Planets is an educational app designed to share detailed information about the p
 
 3. Open the project in Xcode:
    ```bash
-   open Planets.xcodeproj
+   open Planets2025.xcodeproj
    
 4- Build and run the project on the iOS Simulator or a connected device.
 
